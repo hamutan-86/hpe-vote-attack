@@ -26,7 +26,7 @@ app.post('/attack', async (req, res) => {
         "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Mobile/15E148 Safari/604.1",
       }, body: `postId=${Number(id)}&voteType=${voteType}&action=votePost`},).then((data) => {
       count++;
-      console.log(data.text())
+      console.log(await data.text())
     })
     if ( count >= req.body.amount ){
       break;
