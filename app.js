@@ -13,11 +13,12 @@ app.get('/', (req, res) => {
 app.post('/attack', async (req, res) => {
   if ( req.body.amount > 360 ){
     res.status(400).send("360以上やりたいなら自分でコード書いてやれハゲ")
+    return false;
   }
   const id = req.body.id;
   const voteType = req.body.voteType;
   let count = 0;
-  res.status(200).send("started");
+  res.status(200).json({"status": "started"});
   while ( true ) {
     await sleep(50);
     fetch(`https://healthy-person-emulator.org/archives/${id}?_data=routes%2F_layout.archives.%24postId`, {method: "POST", headers: {
@@ -30,6 +31,7 @@ app.post('/attack', async (req, res) => {
       break;
     }
   }
+  return true;
 });
 
 app.listen(3000, () => {
